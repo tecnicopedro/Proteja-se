@@ -1,0 +1,1001 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light" data-font-scale="normal">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Proteja-se contra fraudes financeiras. Guia completo para idosos: conheça os golpes, seus direitos, como pedir ajuda e recuperar seu dinheiro.">
+  <meta name="keywords" content="fraudes financeiras, golpes contra idosos, proteção financeira, direitos do idoso, boletim de ocorrência, PIX, segurança digital">
+  <meta name="author" content="Pedro Isaac Souza">
+  <meta name="theme-color" content="#1B4965">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Proteja-se — Guia de Segurança Financeira para Idosos">
+  <meta property="og:description" content="Tudo que você precisa saber para se proteger de fraudes financeiras. Conheça os golpes, seus direitos e como agir.">
+  <meta property="og:type" content="website">
+
+  <title>Proteja-se — Guia de Segurança Financeira para Idosos</title>
+
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Favicon (shield emoji as SVG) -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛡️</text></svg>">
+</head>
+<body>
+
+  <!-- Skip to main content (accessibility) -->
+  <a href="#conteudo-principal" class="skip-link">Pular para o conteúdo principal</a>
+
+  <!-- ============================================
+       NAVIGATION
+       ============================================ -->
+  <nav class="navbar" id="navbar" role="navigation" aria-label="Menu principal">
+    <!-- Top Bar: Logo + Accessibility + Emergency -->
+    <div class="navbar__top">
+      <div class="navbar__top-inner">
+        <a href="#" class="navbar__logo" aria-label="Proteja-se - Página inicial">
+          <span class="logo-icon">🛡️</span>
+          <div class="logo-brand">
+            <span class="logo-text">Proteja-se</span>
+            <span class="logo-badge">👵👴 Guia do Idoso</span>
+          </div>
+        </a>
+
+        <div class="navbar__right-group">
+          <div class="navbar__accessibility" role="group" aria-label="Acessibilidade">
+            <span class="navbar__a11y-label">Tamanho da letra:</span>
+            <button class="control-btn" id="btnFontDecrease" title="Diminuir letra" aria-label="Diminuir tamanho da letra">
+              A-
+            </button>
+            <button class="control-btn" id="btnFontIncrease" title="Aumentar letra" aria-label="Aumentar tamanho da letra">
+              A+
+            </button>
+            <div class="navbar__divider"></div>
+            <button class="control-btn" id="btnDarkMode" title="Modo escuro" aria-label="Alternar modo escuro">
+              <span class="control-btn__icon">🌙</span>
+              <span class="control-btn__label">Modo Noturno</span>
+            </button>
+          </div>
+
+          <a href="#ajuda" class="navbar__emergency-btn" id="nav-emergency-btn">
+            <span class="navbar__emergency-pulse"></span>
+            📞 Pedir Ajuda
+          </a>
+
+          <button class="navbar__toggle" id="navToggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="navLinks">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Bar: Navigation Links with Icons -->
+    <div class="navbar__bottom" id="navBottom">
+      <div class="navbar__bottom-inner">
+        <ul class="navbar__links" id="navLinks" role="menubar">
+          <li role="none"><a href="#golpes" class="navbar__link" role="menuitem"><span class="navbar__link-icon">🎭</span> Golpes</a></li>
+          <li role="none"><a href="#sinais" class="navbar__link" role="menuitem"><span class="navbar__link-icon">🚨</span> Sinais</a></li>
+          <li role="none"><a href="#direitos" class="navbar__link" role="menuitem"><span class="navbar__link-icon">⚖️</span> Direitos</a></li>
+          <li role="none"><a href="#recuperar" class="navbar__link" role="menuitem"><span class="navbar__link-icon">💸</span> Recuperar</a></li>
+          <li role="none"><a href="#bo" class="navbar__link" role="menuitem"><span class="navbar__link-icon">📝</span> Abrir B.O.</a></li>
+          <li role="none"><a href="#ajuda" class="navbar__link" role="menuitem"><span class="navbar__link-icon">📞</span> Ajuda</a></li>
+          <li role="none"><a href="#dicas" class="navbar__link" role="menuitem"><span class="navbar__link-icon">✅</span> Dicas</a></li>
+          <li role="none"><a href="#perguntas" class="navbar__link" role="menuitem"><span class="navbar__link-icon">❓</span> Dúvidas</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ============================================
+       HERO SECTION
+       ============================================ -->
+  <header class="hero" id="inicio">
+    <div class="container hero__inner">
+      <div class="hero__badge">
+        🔒 Guia Completo de Proteção Financeira
+      </div>
+      <h1 class="hero__title">
+        Seu dinheiro merece<br>
+        <span class="highlight">proteção.</span>
+      </h1>
+      <p class="hero__subtitle">
+        Um guia feito com carinho para ajudar você a reconhecer golpes, conhecer seus direitos e saber exatamente o que fazer se algo acontecer.
+      </p>
+      <div class="hero__cta-group">
+        <a href="#golpes" class="btn btn--primary btn--large" id="cta-conheca-golpes">
+          📖 Conhecer os Golpes
+        </a>
+        <a href="#ajuda" class="btn btn--outline btn--large" id="cta-pedir-ajuda">
+          📞 Pedir Ajuda Agora
+        </a>
+      </div>
+
+      <div class="hero__stats">
+        <div class="hero__stat">
+          <span class="hero__stat-number">1.8 mi</span>
+          <span class="hero__stat-label">Tentativas de golpe por ano no Brasil</span>
+        </div>
+        <div class="hero__stat">
+          <span class="hero__stat-number">70%</span>
+          <span class="hero__stat-label">Dos golpes miram pessoas 60+</span>
+        </div>
+        <div class="hero__stat">
+          <span class="hero__stat-number">3 passos</span>
+          <span class="hero__stat-label">Para se proteger sempre</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Alert Banner -->
+  <div class="alert-banner" role="alert">
+    <div class="container alert-banner__inner">
+      <span class="alert-banner__icon">⚠️</span>
+      <span class="alert-banner__text">
+        Nenhum banco, INSS ou órgão do governo liga pedindo senha, PIX ou dados pessoais. Nunca!
+      </span>
+    </div>
+  </div>
+
+  <!-- ============================================
+       MAIN CONTENT
+       ============================================ -->
+  <main id="conteudo-principal">
+
+    <!-- ========================
+         SEÇÃO 1: TIPOS DE GOLPES
+         ======================== -->
+    <section class="section" id="golpes">
+      <div class="container">
+        <div class="section__header fade-in">
+          <span class="section__badge">
+            <span class="emoji">🎭</span> Fique Atento
+          </span>
+          <h2 class="section__title">Conheça os Golpes Mais Comuns</h2>
+          <p class="section__subtitle">
+            Saber como os golpistas agem é o primeiro passo para nunca cair em armadilhas. Veja os golpes mais aplicados contra idosos.
+          </p>
+        </div>
+
+        <div class="cards-grid stagger-children">
+
+          <!-- Golpe 1: WhatsApp -->
+          <div class="card card--scam fade-in" id="golpe-whatsapp">
+            <div class="card__icon card__icon--green">📱</div>
+            <span class="card__tag card__tag--danger">Muito Comum</span>
+            <h3 class="card__title">Golpe do WhatsApp</h3>
+            <p class="card__text">
+              O golpista envia mensagem fingindo ser um filho, neto ou familiar próximo. Diz que trocou de número e pede dinheiro urgente via PIX.
+            </p>
+            <div class="scam-example">
+              <div class="scam-example__label">⚠️ Exemplo de mensagem falsa:</div>
+              <p class="scam-example__message">
+                "Oi vó, troquei de número! Estou com um problema urgente e preciso que a senhora me mande R$800 por PIX agora, depois explico. Me ajuda?"
+              </p>
+            </div>
+            <div class="protection-box">
+              <div class="protection-box__label">🛡️ Como se proteger:</div>
+              <ul class="protection-box__list">
+                <li>Ligue para o número antigo do familiar</li>
+                <li>Peça para a pessoa mandar um áudio ou fazer videochamada</li>
+                <li>Nunca faça PIX sem confirmar pessoalmente</li>
+                <li>Fale com outro parente antes de agir</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Golpe 2: Falso funcionário de banco -->
+          <div class="card card--scam fade-in" id="golpe-banco">
+            <div class="card__icon card__icon--blue">🏦</div>
+            <span class="card__tag card__tag--danger">Perigoso</span>
+            <h3 class="card__title">Falso Funcionário do Banco</h3>
+            <p class="card__text">
+              Alguém liga dizendo ser do banco, informa que sua conta foi invadida e pede para confirmar senha, número do cartão ou fazer uma transferência de "segurança".
+            </p>
+            <div class="scam-example">
+              <div class="scam-example__label">⚠️ Exemplo de ligação falsa:</div>
+              <p class="scam-example__message">
+                "Boa tarde, aqui é da central de segurança do banco. Detectamos uma compra suspeita no seu cartão. Para cancelar, preciso que confirme sua senha e número do cartão."
+              </p>
+            </div>
+            <div class="protection-box">
+              <div class="protection-box__label">🛡️ Como se proteger:</div>
+              <ul class="protection-box__list">
+                <li>Desligue a ligação imediatamente</li>
+                <li>Banco NUNCA pede senha por telefone</li>
+                <li>Ligue para o número oficial no verso do cartão</li>
+                <li>Nunca instale aplicativos que peçam por ligação</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Golpe 3: Falso INSS -->
+          <div class="card card--scam fade-in" id="golpe-inss">
+            <div class="card__icon card__icon--orange">📋</div>
+            <span class="card__tag card__tag--danger">Muito Comum</span>
+            <h3 class="card__title">Golpe do Falso INSS</h3>
+            <p class="card__text">
+              Golpistas ligam dizendo ser do INSS, afirmam que sua aposentadoria está bloqueada e pedem dados pessoais, senha ou pagamento para "desbloquear".
+            </p>
+            <div class="scam-example">
+              <div class="scam-example__label">⚠️ Exemplo de ligação falsa:</div>
+              <p class="scam-example__message">
+                "Seu benefício foi bloqueado por irregularidade. Para reativar, preciso do número do CPF, senha do Meu INSS e um PIX de R$150 como taxa de regularização."
+              </p>
+            </div>
+            <div class="protection-box">
+              <div class="protection-box__label">🛡️ Como se proteger:</div>
+              <ul class="protection-box__list">
+                <li>O INSS nunca liga pedindo senha ou PIX</li>
+                <li>Atualizações são feitas no app Meu INSS ou na agência</li>
+                <li>Ligue para o 135 (telefone oficial do INSS)</li>
+                <li>Nunca pague taxas para desbloquear benefícios</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Golpe 4: Empréstimo consignado -->
+          <div class="card card--scam fade-in" id="golpe-emprestimo">
+            <div class="card__icon card__icon--purple">💳</div>
+            <span class="card__tag card__tag--warning">Atenção</span>
+            <h3 class="card__title">Empréstimo Consignado Fraudulento</h3>
+            <p class="card__text">
+              Alguém oferece empréstimo por telefone com "condições especiais". Depois, o dinheiro cai na sua conta, mas com juros abusivos, e o contrato é difícil de cancelar.
+            </p>
+            <div class="scam-example">
+              <div class="scam-example__label">⚠️ Exemplo real:</div>
+              <p class="scam-example__message">
+                "Parabéns! O senhor foi pré-aprovado para um empréstimo especial de R$10.000 com parcelas de apenas R$99. Basta confirmar seus dados para liberar agora."
+              </p>
+            </div>
+            <div class="protection-box">
+              <div class="protection-box__label">🛡️ Como se proteger:</div>
+              <ul class="protection-box__list">
+                <li>Nunca aceite empréstimo oferecido por telefone</li>
+                <li>Procure a agência bancária pessoalmente</li>
+                <li>Leia todo o contrato antes de assinar</li>
+                <li>Se receber dinheiro que não pediu, procure o banco</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Golpe 5: Links e redes sociais -->
+          <div class="card card--scam fade-in" id="golpe-links">
+            <div class="card__icon card__icon--red">🔗</div>
+            <span class="card__tag card__tag--danger">Perigoso</span>
+            <h3 class="card__title">Links Falsos e Redes Sociais</h3>
+            <p class="card__text">
+              Mensagens com links que levam a sites falsos imitando bancos, lojas ou governo. Também perfis falsos em redes sociais oferecendo prêmios e promoções.
+            </p>
+            <div class="scam-example">
+              <div class="scam-example__label">⚠️ Exemplos comuns:</div>
+              <p class="scam-example__message">
+                "Você ganhou um prêmio de R$5.000! Clique aqui para resgatar." ou "Atualize seus dados bancários neste link ou sua conta será bloqueada."
+              </p>
+            </div>
+            <div class="protection-box">
+              <div class="protection-box__label">🛡️ Como se proteger:</div>
+              <ul class="protection-box__list">
+                <li>Nunca clique em links recebidos por mensagem</li>
+                <li>Prêmios de verdade não pedem pagamento antecipado</li>
+                <li>Desconfie de perfis novos pedindo amizade</li>
+                <li>Na dúvida, peça ajuda a um familiar</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Golpe 6: Caixa eletrônico -->
+          <div class="card card--scam fade-in" id="golpe-caixa">
+            <div class="card__icon card__icon--blue">🏧</div>
+            <span class="card__tag card__tag--warning">Atenção</span>
+            <h3 class="card__title">Golpes em Caixas Eletrônicos</h3>
+            <p class="card__text">
+              Criminosos oferecem "ajuda" no caixa eletrônico para trocar seu cartão por um falso, ou instalam dispositivos para copiar dados do cartão e filmar a senha.
+            </p>
+            <div class="scam-example">
+              <div class="scam-example__label">⚠️ Situação típica:</div>
+              <p class="scam-example__message">
+                Um estranho se aproxima: "A senhora está com dificuldade? Deixa eu ajudar." Enquanto ajuda, ele troca o cartão verdadeiro por um parecido.
+              </p>
+            </div>
+            <div class="protection-box">
+              <div class="protection-box__label">🛡️ Como se proteger:</div>
+              <ul class="protection-box__list">
+                <li>Nunca aceite ajuda de desconhecidos no caixa</li>
+                <li>Cubra o teclado ao digitar a senha</li>
+                <li>Verifique se há algo estranho no leitor de cartão</li>
+                <li>Peça ajuda somente a funcionários identificados do banco</li>
+              </ul>
+            </div>
+          </div>
+
+        </div><!-- /cards-grid -->
+      </div>
+    </section>
+
+    <!-- ========================
+         SEÇÃO 2: SINAIS DE ALERTA
+         ======================== -->
+    <section class="section section--alt" id="sinais">
+      <div class="container">
+        <div class="section__header fade-in">
+          <span class="section__badge">
+            <span class="emoji">🚨</span> Fique Alerta
+          </span>
+          <h2 class="section__title">Como Saber se é Golpe?</h2>
+          <p class="section__subtitle">
+            Sempre que perceber um ou mais desses sinais, desconfie. Golpistas usam os mesmos truques — aprenda a reconhecê-los.
+          </p>
+        </div>
+
+        <div class="alert-signs stagger-children">
+          <div class="alert-sign fade-in">
+            <div class="alert-sign__icon">⏰</div>
+            <div>
+              <div class="alert-sign__title">Urgência Extrema</div>
+              <div class="alert-sign__desc">"Faça agora ou vai perder o benefício!" — Golpistas criam pressão para você não ter tempo de pensar.</div>
+            </div>
+          </div>
+
+          <div class="alert-sign fade-in">
+            <div class="alert-sign__icon">🔑</div>
+            <div>
+              <div class="alert-sign__title">Pedem Senha ou Dados</div>
+              <div class="alert-sign__desc">Nenhum banco, INSS ou empresa séria pede sua senha, CVV do cartão ou código de segurança por telefone.</div>
+            </div>
+          </div>
+
+          <div class="alert-sign fade-in">
+            <div class="alert-sign__icon">🎁</div>
+            <div>
+              <div class="alert-sign__title">Promessa de Dinheiro Fácil</div>
+              <div class="alert-sign__desc">"Você ganhou R$5.000!" — Desconfie de prêmios que você não concorreu e que pedem pagamento para liberar.</div>
+            </div>
+          </div>
+
+          <div class="alert-sign fade-in">
+            <div class="alert-sign__icon">🤫</div>
+            <div>
+              <div class="alert-sign__title">Pedem Segredo</div>
+              <div class="alert-sign__desc">"Não conte para ninguém." — Golpistas pedem sigilo porque sabem que, se você consultar alguém, o golpe falha.</div>
+            </div>
+          </div>
+
+          <div class="alert-sign fade-in">
+            <div class="alert-sign__icon">🔗</div>
+            <div>
+              <div class="alert-sign__title">Links Estranhos</div>
+              <div class="alert-sign__desc">Endereços de sites que parecem, mas não são, o site oficial. Exemplo: "bancodobrazil.com" em vez de "bb.com.br".</div>
+            </div>
+          </div>
+
+          <div class="alert-sign fade-in">
+            <div class="alert-sign__icon">😢</div>
+            <div>
+              <div class="alert-sign__title">Apelo Emocional</div>
+              <div class="alert-sign__desc">"Vó, estou no hospital!" — Usam seu amor pela família para manipulá-lo a agir sem pensar.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Golden Rules -->
+        <div class="highlight-quote fade-in">
+          <span class="highlight-quote__emoji">💡</span>
+          <p class="highlight-quote__text">
+            Se alguém pede dinheiro com urgência e pede segredo — é golpe.<br>
+            <strong>Pare. Confirme. Só depois decida.</strong>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================
+         SEÇÃO 3: SEUS DIREITOS
+         ======================== -->
+    <section class="section" id="direitos">
+      <div class="container">
+        <div class="section__header fade-in">
+          <span class="section__badge">
+            <span class="emoji">⚖️</span> Você Tem Direitos
+          </span>
+          <h2 class="section__title">Direitos do Idoso Contra Fraudes</h2>
+          <p class="section__subtitle">
+            A lei brasileira protege o idoso. Conheça seus direitos e saiba que você nunca está sozinho.
+          </p>
+        </div>
+
+        <div class="rights-grid stagger-children">
+
+          <div class="right-card fade-in">
+            <div class="right-card__icon">📜</div>
+            <div>
+              <div class="right-card__title">Proteção do Estatuto do Idoso</div>
+              <p class="right-card__text">
+                O Estatuto do Idoso garante proteção integral à pessoa com 60 anos ou mais, incluindo proteção contra abuso financeiro, negligência e qualquer forma de violência.
+              </p>
+              <span class="right-card__law">Lei 10.741/2003</span>
+            </div>
+          </div>
+
+          <div class="right-card fade-in">
+            <div class="right-card__icon">🏛️</div>
+            <div>
+              <div class="right-card__title">Atendimento Prioritário</div>
+              <p class="right-card__text">
+                Idosos têm direito a atendimento prioritário em delegacias, bancos, Procon e órgãos públicos. Nenhuma fila pode dificultar seu acesso à justiça.
+              </p>
+              <span class="right-card__law">Art. 3º, Estatuto do Idoso</span>
+            </div>
+          </div>
+
+          <div class="right-card fade-in">
+            <div class="right-card__icon">💰</div>
+            <div>
+              <div class="right-card__title">Devolução de Valores</div>
+              <p class="right-card__text">
+                Bancos são responsáveis pela segurança das transações. Se houver fraude comprovada, o banco deve devolver o valor — especialmente em golpes por PIX.
+              </p>
+              <span class="right-card__law">CDC + Resolução BCB 403/2024</span>
+            </div>
+          </div>
+
+          <div class="right-card fade-in">
+            <div class="right-card__icon">🚫</div>
+            <div>
+              <div class="right-card__title">Cancelar Empréstimo Não Autorizado</div>
+              <p class="right-card__text">
+                Se um empréstimo consignado foi contratado sem sua autorização, você tem direito a cancelar e receber de volta todos os valores descontados, com correção.
+              </p>
+              <span class="right-card__law">IN INSS nº 28/2008</span>
+            </div>
+          </div>
+
+          <div class="right-card fade-in">
+            <div class="right-card__icon">👨‍⚖️</div>
+            <div>
+              <div class="right-card__title">Assistência Jurídica Gratuita</div>
+              <p class="right-card__text">
+                Se não puder pagar um advogado, a Defensoria Pública oferece assistência jurídica gratuita. Você tem direito a orientação e acompanhamento em processos.
+              </p>
+              <span class="right-card__law">Art. 5º, LXXIV, CF/88</span>
+            </div>
+          </div>
+
+          <div class="right-card fade-in">
+            <div class="right-card__icon">🔒</div>
+            <div>
+              <div class="right-card__title">Proteção de Dados Pessoais</div>
+              <p class="right-card__text">
+                Seus dados pessoais são protegidos pela LGPD. Nenhuma empresa pode usar seus dados sem autorização, e você pode pedir a exclusão deles a qualquer momento.
+              </p>
+              <span class="right-card__law">Lei 13.709/2018 (LGPD)</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================
+         SEÇÃO 4: RECUPERAR DINHEIRO
+         ======================== -->
+    <section class="section section--alt" id="recuperar">
+      <div class="container">
+        <div class="section__header fade-in">
+          <span class="section__badge">
+            <span class="emoji">💸</span> Caiu num Golpe?
+          </span>
+          <h2 class="section__title">Como Recuperar Seu Dinheiro</h2>
+          <p class="section__subtitle">
+            Se você foi vítima de um golpe, não se culpe. Aja rápido e siga estes passos — quanto antes agir, maior a chance de recuperar os valores.
+          </p>
+        </div>
+
+        <div class="steps fade-in">
+
+          <div class="step">
+            <div class="step__number">1</div>
+            <div class="step__content">
+              <h3 class="step__title">Entre em contato com o banco imediatamente</h3>
+              <p class="step__text">
+                Ligue para o SAC ou vá até a agência bancária o mais rápido possível. Informe que foi vítima de golpe e peça o <strong>bloqueio imediato</strong> da conta e do cartão. Solicite a <strong>contestação da transação</strong>.
+              </p>
+              <span class="step__highlight">⏰ Faça isso nas primeiras horas — o tempo é essencial!</span>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step__number">2</div>
+            <div class="step__content">
+              <h3 class="step__title">Para golpes com PIX: Solicite o MED</h3>
+              <p class="step__text">
+                O <strong>MED (Mecanismo Especial de Devolução)</strong> é um sistema do Banco Central para recuperar PIX em caso de fraude. Peça ao seu banco para acionar o MED. O banco receptor tem até 7 dias para bloquear o valor na conta do golpista.
+              </p>
+              <span class="step__highlight">📋 Anote o protocolo do pedido MED</span>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step__number">3</div>
+            <div class="step__content">
+              <h3 class="step__title">Registre um Boletim de Ocorrência</h3>
+              <p class="step__text">
+                Vá a uma delegacia ou faça online (veja a seção abaixo). O B.O. é fundamental para comprovar a fraude junto ao banco e para a investigação policial.
+              </p>
+              <span class="step__highlight">📄 Guarde uma cópia do B.O. — você vai precisar</span>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step__number">4</div>
+            <div class="step__content">
+              <h3 class="step__title">Registre reclamação no Banco Central</h3>
+              <p class="step__text">
+                Se o banco não resolver, registre uma reclamação no <strong>Banco Central</strong> pelo telefone <strong>145</strong> ou pelo site registrato.bcb.gov.br. Também faça uma reclamação no <strong>Procon</strong> da sua cidade.
+              </p>
+              <span class="step__highlight">☎️ Banco Central: 145 (segunda a sexta, 8h às 20h)</span>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step__number">5</div>
+            <div class="step__content">
+              <h3 class="step__title">Procure o Juizado Especial (se necessário)</h3>
+              <p class="step__text">
+                Para valores de até 20 salários mínimos, você pode entrar no <strong>Juizado Especial Cível</strong> sem advogado e sem custos. Acima desse valor, a Defensoria Pública pode ajudar gratuitamente.
+              </p>
+              <span class="step__highlight">⚖️ O Juizado Especial é gratuito para causas até 20 SM</span>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="highlight-quote fade-in">
+          <span class="highlight-quote__emoji">❤️</span>
+          <p class="highlight-quote__text">
+            Ser vítima de golpe não é vergonha. Os criminosos são profissionais e enganam milhares de pessoas.<br>
+            <strong>O importante é agir rápido e buscar ajuda.</strong>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================
+         SEÇÃO 5: COMO ABRIR B.O.
+         ======================== -->
+    <section class="section" id="bo">
+      <div class="container">
+        <div class="section__header fade-in">
+          <span class="section__badge">
+            <span class="emoji">📝</span> Passo a Passo
+          </span>
+          <h2 class="section__title">Como Abrir um Boletim de Ocorrência</h2>
+          <p class="section__subtitle">
+            O Boletim de Ocorrência (B.O.) é o documento que registra oficialmente o crime. Ele é essencial para investigação e para pedir a devolução do dinheiro.
+          </p>
+        </div>
+
+        <div class="cards-grid--2 cards-grid stagger-children">
+
+          <!-- Opção 1: Presencial -->
+          <div class="card card--tip fade-in" id="bo-presencial">
+            <div class="card__icon card__icon--blue">🏢</div>
+            <h3 class="card__title">Opção 1: Na Delegacia (Presencial)</h3>
+            <p class="card__text">
+              Vá até a delegacia mais próxima. Se houver <strong>Delegacia do Idoso</strong> ou <strong>Delegacia de Crimes Cibernéticos</strong> na sua cidade, dê preferência a elas.
+            </p>
+            <div class="protection-box">
+              <div class="protection-box__label">📋 O que levar:</div>
+              <ul class="protection-box__list">
+                <li>RG e CPF (documento com foto)</li>
+                <li>Comprovantes: prints de mensagens, extratos, comprovantes de PIX</li>
+                <li>Número de telefone do golpista (se tiver)</li>
+                <li>Chave PIX usada pelo criminoso</li>
+                <li>Nome do banco e agência</li>
+                <li>Protocolo de atendimento do banco (se já ligou)</li>
+              </ul>
+            </div>
+            <div class="protection-box" style="margin-top: var(--space-sm);">
+              <div class="protection-box__label">💡 Dica importante:</div>
+              <ul class="protection-box__list">
+                <li>Peça para alguém de confiança acompanhá-lo</li>
+                <li>Solicite atendimento prioritário (é seu direito)</li>
+                <li>Guarde a cópia do B.O. em local seguro</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Opção 2: Online -->
+          <div class="card card--tip fade-in" id="bo-online">
+            <div class="card__icon card__icon--green">💻</div>
+            <h3 class="card__title">Opção 2: Online (Delegacia Virtual)</h3>
+            <p class="card__text">
+              Vários estados permitem registrar o B.O. pela internet, sem sair de casa. Peça ajuda a um familiar para acessar o site, se necessário.
+            </p>
+            <div class="protection-box">
+              <div class="protection-box__label">🌐 Delegacias Virtuais por estado:</div>
+              <ul class="protection-box__list">
+                <li><strong>Pará:</strong> delegaciavirtual.ssp.pa.gov.br</li>
+                <li><strong>São Paulo:</strong> delegaciaeletronica.policiacivil.sp.gov.br</li>
+                <li><strong>Rio de Janeiro:</strong> rfrj.pcivil.rj.gov.br</li>
+                <li><strong>Minas Gerais:</strong> delegaciavirtual.sids.mg.gov.br</li>
+                <li><strong>Outros estados:</strong> pesquise "delegacia virtual + seu estado"</li>
+              </ul>
+            </div>
+            <div class="protection-box" style="margin-top: var(--space-sm);">
+              <div class="protection-box__label">📸 Dica: Tire prints antes!</div>
+              <ul class="protection-box__list">
+                <li>Salve capturas de tela das conversas</li>
+                <li>Fotografe comprovantes de transferência</li>
+                <li>Anote datas, horários e valores envolvidos</li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================
+         SEÇÃO 6: CANAIS DE AJUDA
+         ======================== -->
+    <section class="section section--alt" id="ajuda">
+      <div class="container">
+        <div class="section__header fade-in">
+          <span class="section__badge">
+            <span class="emoji">📞</span> Peça Ajuda
+          </span>
+          <h2 class="section__title">Canais de Ajuda e Denúncia</h2>
+          <p class="section__subtitle">
+            Você não precisa resolver tudo sozinho. Existem órgãos e serviços prontos para ajudar. Todos são gratuitos.
+          </p>
+        </div>
+
+        <div class="contacts-grid stagger-children">
+
+          <div class="contact-card contact-card--emergency fade-in" id="contato-190">
+            <div class="contact-card__icon">🚔</div>
+            <div class="contact-card__name">Polícia Militar</div>
+            <div class="contact-card__number">190</div>
+            <p class="contact-card__desc">Para emergências e flagrantes. Funciona 24 horas, todos os dias.</p>
+          </div>
+
+          <div class="contact-card contact-card--emergency fade-in" id="contato-100">
+            <div class="contact-card__icon">🤝</div>
+            <div class="contact-card__name">Disque Direitos Humanos</div>
+            <div class="contact-card__number">100</div>
+            <p class="contact-card__desc">Para denunciar abusos contra idosos, violência ou negligência. Ligação gratuita, 24h.</p>
+          </div>
+
+          <div class="contact-card fade-in" id="contato-197">
+            <div class="contact-card__icon">🕵️</div>
+            <div class="contact-card__name">Polícia Civil</div>
+            <div class="contact-card__number">197</div>
+            <p class="contact-card__desc">Para registrar ocorrências e acompanhar investigações de estelionato.</p>
+          </div>
+
+          <div class="contact-card fade-in" id="contato-135">
+            <div class="contact-card__icon">📋</div>
+            <div class="contact-card__name">INSS</div>
+            <div class="contact-card__number">135</div>
+            <p class="contact-card__desc">Canal oficial para dúvidas sobre aposentadoria e benefícios. Segunda a sábado, 7h às 22h.</p>
+          </div>
+
+          <div class="contact-card fade-in" id="contato-145">
+            <div class="contact-card__icon">🏦</div>
+            <div class="contact-card__name">Banco Central</div>
+            <div class="contact-card__number">145</div>
+            <p class="contact-card__desc">Para reclamações contra bancos e instituições financeiras. Segunda a sexta, 8h às 20h.</p>
+          </div>
+
+          <div class="contact-card fade-in" id="contato-procon">
+            <div class="contact-card__icon">⚖️</div>
+            <div class="contact-card__name">Procon</div>
+            <div class="contact-card__number">151</div>
+            <p class="contact-card__desc">Defesa do consumidor. Ajuda com problemas com bancos, empresas e contratos indevidos.</p>
+          </div>
+
+          <div class="contact-card fade-in" id="contato-creas">
+            <div class="contact-card__icon">🏠</div>
+            <div class="contact-card__name">CREAS</div>
+            <div class="contact-card__number">Procure na sua cidade</div>
+            <p class="contact-card__desc">Centro de Referência Especializado de Assistência Social. Atende situações de violência contra idosos.</p>
+          </div>
+
+          <div class="contact-card fade-in" id="contato-defensoria">
+            <div class="contact-card__icon">👨‍⚖️</div>
+            <div class="contact-card__name">Defensoria Pública</div>
+            <div class="contact-card__number">Procure na sua cidade</div>
+            <p class="contact-card__desc">Assistência jurídica gratuita para quem não pode pagar advogado. Ajuda em processos contra bancos.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================
+         SEÇÃO 7: DICAS DIÁRIAS
+         ======================== -->
+    <section class="section" id="dicas">
+      <div class="container">
+        <div class="section__header fade-in">
+          <span class="section__badge">
+            <span class="emoji">✅</span> Proteção Diária
+          </span>
+          <h2 class="section__title">Dicas para se Proteger Todos os Dias</h2>
+          <p class="section__subtitle">
+            Pequenos hábitos fazem uma grande diferença. Siga estas orientações e compartilhe com seus familiares.
+          </p>
+        </div>
+
+        <div class="cards-grid cards-grid--3 stagger-children">
+
+          <div class="card card--tip fade-in">
+            <div class="card__icon card__icon--green">🔐</div>
+            <h3 class="card__title">Cuide das Suas Senhas</h3>
+            <p class="card__text">
+              Nunca anote suas senhas no cartão, no celular desbloqueado ou em papéis na carteira. Use senhas diferentes para cada serviço. Se possível, peça ajuda para criar senhas fortes.
+            </p>
+          </div>
+
+          <div class="card card--tip fade-in">
+            <div class="card__icon card__icon--blue">📱</div>
+            <h3 class="card__title">Use Apenas Canais Oficiais</h3>
+            <p class="card__text">
+              Acesse o banco somente pelo aplicativo oficial ou no site com "https://" e o cadeado. Nunca acesse por links recebidos em mensagens. Na dúvida, vá pessoalmente à agência.
+            </p>
+          </div>
+
+          <div class="card card--tip fade-in">
+            <div class="card__icon card__icon--orange">👨‍👩‍👧‍👦</div>
+            <h3 class="card__title">Converse com a Família</h3>
+            <p class="card__text">
+              Antes de fazer qualquer transferência ou fornecer dados por telefone, converse com um familiar de confiança. Combinem uma "palavra secreta" que só a família conhece.
+            </p>
+          </div>
+
+          <div class="card card--tip fade-in">
+            <div class="card__icon card__icon--red">🚫</div>
+            <h3 class="card__title">Desconfie de Urgência</h3>
+            <p class="card__text">
+              Se alguém pede dinheiro com pressa e não deixa você pensar ou consultar alguém, é quase certeza de golpe. Decisões financeiras devem ser tomadas com calma.
+            </p>
+          </div>
+
+          <div class="card card--tip fade-in">
+            <div class="card__icon card__icon--purple">📞</div>
+            <h3 class="card__title">Confirme Ligações Suspeitas</h3>
+            <p class="card__text">
+              Se receber uma ligação do "banco" ou do "INSS", desligue e ligue de volta pelo número oficial (no verso do cartão ou no site oficial). Golpistas falsificam o número que aparece na tela.
+            </p>
+          </div>
+
+          <div class="card card--tip fade-in">
+            <div class="card__icon card__icon--green">💳</div>
+            <h3 class="card__title">Proteja seu Cartão</h3>
+            <p class="card__text">
+              Nunca entregue seu cartão a terceiros. Cubra o teclado ao digitar a senha. Verifique se o cartão devolvido é realmente o seu. Na dúvida, bloqueie pelo aplicativo.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================
+         SEÇÃO 8: PERGUNTAS FREQUENTES
+         ======================== -->
+    <section class="section section--alt" id="perguntas">
+      <div class="container">
+        <div class="section__header fade-in">
+          <span class="section__badge">
+            <span class="emoji">❓</span> Dúvidas
+          </span>
+          <h2 class="section__title">Perguntas Frequentes</h2>
+          <p class="section__subtitle">
+            As respostas para as dúvidas mais comuns sobre golpes e proteção financeira.
+          </p>
+        </div>
+
+        <div class="accordion fade-in" id="faq-accordion">
+
+          <div class="accordion__item" id="faq-1">
+            <button class="accordion__header" aria-expanded="false" aria-controls="faq-1-body">
+              <span class="accordion__icon">+</span>
+              <span>Fiz um PIX para um golpista. Tem como recuperar?</span>
+              <span class="accordion__chevron">▼</span>
+            </button>
+            <div class="accordion__body" id="faq-1-body" role="region">
+              <div class="accordion__content">
+                <p><strong>Sim, é possível!</strong> O Banco Central criou o MED (Mecanismo Especial de Devolução) justamente para essas situações. Siga estes passos:</p>
+                <ul>
+                  <li>Ligue imediatamente para o SAC do seu banco</li>
+                  <li>Peça para acionarem o MED</li>
+                  <li>O banco receptor terá até 7 dias para bloquear o valor</li>
+                  <li>Registre um Boletim de Ocorrência</li>
+                  <li>O prazo máximo para solicitar o MED é de 80 dias após a transação</li>
+                </ul>
+                <p><strong>Importante:</strong> Quanto mais rápido agir, maior a chance de recuperar. Se o golpista já sacou o dinheiro, a recuperação fica mais difícil, mas ainda assim registre tudo.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion__item" id="faq-2">
+            <button class="accordion__header" aria-expanded="false" aria-controls="faq-2-body">
+              <span class="accordion__icon">+</span>
+              <span>O banco pode se recusar a devolver o dinheiro?</span>
+              <span class="accordion__chevron">▼</span>
+            </button>
+            <div class="accordion__body" id="faq-2-body" role="region">
+              <div class="accordion__content">
+                <p>O banco pode alegar que a transação foi feita por você e se recusar. Nesse caso:</p>
+                <ul>
+                  <li>Registre reclamação no <strong>Banco Central (145)</strong></li>
+                  <li>Faça uma queixa no <strong>Procon (151)</strong></li>
+                  <li>Procure a <strong>Defensoria Pública</strong> para orientação jurídica gratuita</li>
+                  <li>Vá ao <strong>Juizado Especial Cível</strong> — é gratuito para causas até 20 salários mínimos</li>
+                </ul>
+                <p>A Justiça tem reconhecido a responsabilidade dos bancos em muitos casos de golpe, especialmente quando a transação foge do padrão habitual do cliente.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion__item" id="faq-3">
+            <button class="accordion__header" aria-expanded="false" aria-controls="faq-3-body">
+              <span class="accordion__icon">+</span>
+              <span>Contrataram um empréstimo no meu nome sem autorização. O que faço?</span>
+              <span class="accordion__chevron">▼</span>
+            </button>
+            <div class="accordion__body" id="faq-3-body" role="region">
+              <div class="accordion__content">
+                <p>Infelizmente isso é muito comum. Veja o que fazer:</p>
+                <ul>
+                  <li>Vá ao banco e solicite o <strong>cancelamento imediato</strong> do empréstimo</li>
+                  <li>Peça o <strong>contrato do empréstimo</strong> para verificar assinaturas</li>
+                  <li>Registre <strong>Boletim de Ocorrência</strong></li>
+                  <li>Reclame no <strong>Banco Central (145)</strong> e no <strong>Procon</strong></li>
+                  <li>Se os descontos continuarem, procure a <strong>Defensoria Pública</strong></li>
+                </ul>
+                <p>Você tem direito à devolução de todos os valores descontados indevidamente, com juros e correção monetária.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion__item" id="faq-4">
+            <button class="accordion__header" aria-expanded="false" aria-controls="faq-4-body">
+              <span class="accordion__icon">+</span>
+              <span>Posso registrar B.O. online?</span>
+              <span class="accordion__chevron">▼</span>
+            </button>
+            <div class="accordion__body" id="faq-4-body" role="region">
+              <div class="accordion__content">
+                <p><strong>Sim!</strong> A maioria dos estados brasileiros tem Delegacia Virtual. Você pode registrar o B.O. sem sair de casa, mas pode precisar de ajuda para acessar o site.</p>
+                <ul>
+                  <li>Procure por "Delegacia Virtual" + o nome do seu estado</li>
+                  <li>Selecione o tipo de crime (estelionato / fraude eletrônica)</li>
+                  <li>Preencha todos os dados e anexe comprovantes</li>
+                  <li>Salve o número do B.O. gerado</li>
+                </ul>
+                <p><strong>Dica:</strong> Se tiver dificuldade com o computador, peça a um familiar de confiança para ajudar. Ou vá presencialmente à delegacia — é seu direito ao atendimento prioritário.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion__item" id="faq-5">
+            <button class="accordion__header" aria-expanded="false" aria-controls="faq-5-body">
+              <span class="accordion__icon">+</span>
+              <span>Recebi uma ligação do INSS pedindo meus dados. Devo passar?</span>
+              <span class="accordion__chevron">▼</span>
+            </button>
+            <div class="accordion__body" id="faq-5-body" role="region">
+              <div class="accordion__content">
+                <p><strong>Não! Nunca passe dados por telefone.</strong></p>
+                <ul>
+                  <li>O INSS <strong>nunca</strong> liga pedindo CPF, senha ou dados bancários</li>
+                  <li>O INSS <strong>nunca</strong> cobra taxa para liberar benefícios</li>
+                  <li>Se tiver dúvida, desligue e ligue para o <strong>135</strong> (número oficial do INSS)</li>
+                  <li>Atualizações cadastrais são feitas no <strong>app Meu INSS</strong> ou na <strong>agência</strong></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion__item" id="faq-6">
+            <button class="accordion__header" aria-expanded="false" aria-controls="faq-6-body">
+              <span class="accordion__icon">+</span>
+              <span>Um familiar meu está aplicando golpes em mim. O que posso fazer?</span>
+              <span class="accordion__chevron">▼</span>
+            </button>
+            <div class="accordion__body" id="faq-6-body" role="region">
+              <div class="accordion__content">
+                <p>Infelizmente, abuso financeiro por familiares é mais comum do que se imagina. Você tem todo direito de se proteger:</p>
+                <ul>
+                  <li>Ligue para o <strong>Disque 100</strong> — é anônimo e gratuito</li>
+                  <li>Procure o <strong>CREAS</strong> (Centro de Referência) da sua cidade</li>
+                  <li>Registre <strong>Boletim de Ocorrência</strong></li>
+                  <li>Procure o <strong>Ministério Público</strong> ou a <strong>Defensoria Pública</strong></li>
+                  <li>O Estatuto do Idoso prevê pena de 1 a 4 anos para quem se aproveitar financeiramente de idoso</li>
+                </ul>
+                <p><strong>Você não está sozinho.</strong> Existe uma rede de proteção pronta para ajudar.</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================
+         SEÇÃO 9: REGRA DE OURO
+         ======================== -->
+    <section class="section" id="regra-ouro">
+      <div class="container">
+        <div class="section__header fade-in">
+          <span class="section__badge">
+            <span class="emoji">⭐</span> Regra de Ouro
+          </span>
+          <h2 class="section__title">Três Palavras que Protegem Você</h2>
+          <p class="section__subtitle">
+            Memorize estas três etapas. Um minuto de calma pode evitar um grande prejuízo.
+          </p>
+        </div>
+
+        <div class="golden-rules fade-in">
+          <div class="golden-rule">
+            <span class="golden-rule__step">1</span>
+            <span class="golden-rule__icon">🛑</span>
+            <h3 class="golden-rule__title">PARE</h3>
+            <p class="golden-rule__text">Não aja com pressa. Respire fundo. Golpistas querem que você decida sem pensar.</p>
+          </div>
+          <div class="golden-rule">
+            <span class="golden-rule__step">2</span>
+            <span class="golden-rule__icon">🔍</span>
+            <h3 class="golden-rule__title">CONFIRME</h3>
+            <p class="golden-rule__text">Ligue para um familiar de confiança. Verifique a informação por outro canal. Pergunte antes de agir.</p>
+          </div>
+          <div class="golden-rule">
+            <span class="golden-rule__step">3</span>
+            <span class="golden-rule__icon">✅</span>
+            <h3 class="golden-rule__title">SÓ DEPOIS DECIDA</h3>
+            <p class="golden-rule__text">Com calma, com informação e com segurança. Se for verdade, pode esperar. Se for golpe, você se salvou.</p>
+          </div>
+        </div>
+
+        <div class="highlight-quote fade-in" style="margin-top: var(--space-xl);">
+          <span class="highlight-quote__emoji">🛡️</span>
+          <p class="highlight-quote__text">
+            "Conhecimento é a melhor forma de proteger seu dinheiro."<br>
+            <strong>Compartilhe este guia com quem você ama.</strong>
+          </p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================================
+       FOOTER
+       ============================================ -->
+  <footer class="footer" role="contentinfo">
+    <div class="container footer__inner">
+      <div class="footer__logo">🛡️ Proteja-se</div>
+      <p class="footer__text">
+        Este site foi criado como um serviço público de educação e prevenção contra fraudes financeiras, com foco especial na proteção de pessoas idosas. Todo o conteúdo é de uso livre e pode ser compartilhado.
+      </p>
+      <div class="footer__credits">
+        <span>Desenvolvido com ❤️ por Pedro Isaac Souza — Analista de TI | Cibersegurança</span>
+        <span>Conteúdo baseado em orientações do Banco Central, INSS, Procon e Estatuto do Idoso</span>
+        <span>© 2026 — Proteja-se. Todos os direitos reservados.</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to top button -->
+  <button class="back-to-top" id="backToTop" aria-label="Voltar ao topo" title="Voltar ao topo">
+    ↑
+  </button>
+
+  <script src="script.js"></script>
+</body>
+</html>
