@@ -25,20 +25,47 @@ document.addEventListener('DOMContentLoaded', () => {
   const navToggle = document.getElementById('navToggle');
   const navBottom = document.getElementById('navBottom');
   const navLinks = document.getElementById('navLinks');
+  const navDrawerClose = document.getElementById('navDrawerClose');
+  const navBottomPanel = document.getElementById('navBottomPanel');
+
+  const closeMobileMenu = () => {
+    navBottom.classList.remove('open');
+    navToggle.setAttribute('aria-expanded', 'false');
+    navToggle.setAttribute('aria-label', 'Abrir menu');
+    document.body.style.overflow = '';
+  };
+
+  const openMobileMenu = () => {
+    navBottom.classList.add('open');
+    navToggle.setAttribute('aria-expanded', 'true');
+    navToggle.setAttribute('aria-label', 'Fechar menu');
+    document.body.style.overflow = 'hidden';
+  };
 
   navToggle.addEventListener('click', () => {
-    const isOpen = navBottom.classList.toggle('open');
-    navToggle.setAttribute('aria-expanded', isOpen);
-    navToggle.setAttribute('aria-label', isOpen ? 'Fechar menu' : 'Abrir menu');
+    const isOpen = navBottom.classList.contains('open');
+    if (isOpen) {
+      closeMobileMenu();
+    } else {
+      openMobileMenu();
+    }
+  });
+
+  // Close via the drawer's X button
+  if (navDrawerClose) {
+    navDrawerClose.addEventListener('click', closeMobileMenu);
+  }
+
+  // Close when clicking the overlay (the dark backdrop), but NOT the inner panel
+  navBottom.addEventListener('click', (e) => {
+    if (navBottomPanel && !navBottomPanel.contains(e.target)) {
+      closeMobileMenu();
+    }
   });
 
   // Close mobile menu when clicking a link
   navLinks.querySelectorAll('.navbar__link').forEach(link => {
-    link.addEventListener('click', () => {
-      navBottom.classList.remove('open');
-      navToggle.setAttribute('aria-expanded', 'false');
-      navToggle.setAttribute('aria-label', 'Abrir menu');
-    });
+    link.addEventListener('click', closeMobileMenu);
   });
 
   // ============================================
@@ -336,8 +363,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Escape key closes mobile menu
     if (e.key === 'Escape') {
       if (navBottom.classList.contains('open')) {
-        navBottom.classList.remove('open');
-        navToggle.setAttribute('aria-expanded', 'false');
+        closeMobileMenu();
         navToggle.focus();
       }
     }
@@ -446,14 +472,16 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         // Recovery steps
+        const stepOrdinals = ['Primeiro passo', 'Segundo passo', 'Terceiro passo', 'Quarto passo', 'Quinto passo', 'Sexto passo'];
         const steps = sec.querySelectorAll('.step');
         steps.forEach((st, idx) => {
           const stTitle = st.querySelector('.step__title');
           const stText = st.querySelector('.step__text');
           const stHighlight = st.querySelector('.step__highlight');
           if (stTitle && stText) {
-            let txt = `Passo ${idx + 1}: ` + stTitle.textContent + ". " + stText.textContent;
-            if (stHighlight) txt += " " + stHighlight.textContent;
+            const ordinal = stepOrdinals[idx] || `Passo ${idx + 1}`;
+            let txt = ordinal + ': ' + stTitle.textContent + '. ' + stText.textContent;
+            if (stHighlight) txt += ' ' + stHighlight.textContent;
             chunks.push(cleanSpeechText(txt));
           }
         });
@@ -465,7 +493,9 @@ document.addEventListener('DOMContentLoaded', () => {
           const cnum = c.querySelector('.contact-card__number');
           const cd = c.querySelector('.contact-card__desc');
           if (cn && cnum) {
-            chunks.push(cleanSpeechText(`Contato de ajuda: ${cn.textContent}, número ${cnum.textContent}. ${cd ? cd.textContent : ''}`));
+            const numText = cnum.textContent.trim();
+            // Only convert numeric phone numbers, leave text like 'Procure na sua cidade' as-is
+            chunks.push(cleanSpeechText(`Canal de ajuda: ${cn.textContent}. Número: ${numText}. ${cd ? cd.textContent : ''}`));
           }
         });
 

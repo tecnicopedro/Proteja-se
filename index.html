@@ -77,7 +77,15 @@
 
     <!-- Bottom Bar: Navigation Links with Icons -->
     <div class="navbar__bottom" id="navBottom">
-      <div class="navbar__bottom-inner">
+      <div class="navbar__bottom-inner" id="navBottomPanel">
+        <!-- Drawer Header -->
+        <div class="navbar__drawer-header">
+          <span class="navbar__drawer-title">🛡️ Menu de Navegação</span>
+          <button class="navbar__drawer-close" id="navDrawerClose" aria-label="Fechar menu">
+            <span aria-hidden="true">✕</span> Fechar
+          </button>
+        </div>
+
         <!-- Mobile Accessibility Drawer Section -->
         <div class="mobile-a11y-bar">
           <span class="mobile-a11y-bar__title">⚙️ Opções de Acessibilidade:</span>
@@ -95,13 +103,13 @@
 
         <ul class="navbar__links" id="navLinks" role="menubar">
           <li role="none"><a href="#golpes" class="navbar__link" role="menuitem"><span class="navbar__link-icon">🎭</span> Golpes</a></li>
-          <li role="none"><a href="#sinais" class="navbar__link" role="menuitem"><span class="navbar__link-icon">🚨</span> Sinais</a></li>
-          <li role="none"><a href="#direitos" class="navbar__link" role="menuitem"><span class="navbar__link-icon">⚖️</span> Direitos</a></li>
-          <li role="none"><a href="#recuperar" class="navbar__link" role="menuitem"><span class="navbar__link-icon">💸</span> Recuperar</a></li>
+          <li role="none"><a href="#sinais" class="navbar__link" role="menuitem"><span class="navbar__link-icon">🚨</span> Sinais de Alerta</a></li>
+          <li role="none"><a href="#direitos" class="navbar__link" role="menuitem"><span class="navbar__link-icon">⚖️</span> Seus Direitos</a></li>
+          <li role="none"><a href="#recuperar" class="navbar__link" role="menuitem"><span class="navbar__link-icon">💸</span> Recuperar Dinheiro</a></li>
           <li role="none"><a href="#bo" class="navbar__link" role="menuitem"><span class="navbar__link-icon">📝</span> Abrir B.O.</a></li>
-          <li role="none"><a href="#ajuda" class="navbar__link" role="menuitem"><span class="navbar__link-icon">📞</span> Ajuda</a></li>
-          <li role="none"><a href="#dicas" class="navbar__link" role="menuitem"><span class="navbar__link-icon">✅</span> Dicas</a></li>
-          <li role="none"><a href="#perguntas" class="navbar__link" role="menuitem"><span class="navbar__link-icon">❓</span> Dúvidas</a></li>
+          <li role="none"><a href="#ajuda" class="navbar__link" role="menuitem"><span class="navbar__link-icon">📞</span> Canais de Ajuda</a></li>
+          <li role="none"><a href="#dicas" class="navbar__link" role="menuitem"><span class="navbar__link-icon">✅</span> Dicas de Proteção</a></li>
+          <li role="none"><a href="#perguntas" class="navbar__link" role="menuitem"><span class="navbar__link-icon">❓</span> Dúvidas Frequentes</a></li>
         </ul>
       </div>
     </div>
