@@ -56,8 +56,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const btnFontIncrease = document.getElementById('btnFontIncrease');
   const btnFontDecrease = document.getElementById('btnFontDecrease');
+  const btnFontIncreaseMob = document.getElementById('btnFontIncreaseMob');
+  const btnFontDecreaseMob = document.getElementById('btnFontDecreaseMob');
 
-  btnFontIncrease.addEventListener('click', () => {
+  const increaseFont = () => {
     if (currentScaleIndex < fontScales.length - 1) {
       currentScaleIndex++;
       const newScale = fontScales[currentScaleIndex];
@@ -65,9 +67,9 @@ document.addEventListener('DOMContentLoaded', () => {
       localStorage.setItem('proteja-se-font-scale', newScale);
       announceToScreenReader(`Tamanho da letra: ${getScaleLabel(newScale)}`);
     }
-  });
+  };
 
-  btnFontDecrease.addEventListener('click', () => {
+  const decreaseFont = () => {
     if (currentScaleIndex > 0) {
       currentScaleIndex--;
       const newScale = fontScales[currentScaleIndex];
@@ -75,7 +77,12 @@ document.addEventListener('DOMContentLoaded', () => {
       localStorage.setItem('proteja-se-font-scale', newScale);
       announceToScreenReader(`Tamanho da letra: ${getScaleLabel(newScale)}`);
     }
-  });
+  };
+
+  if (btnFontIncrease) btnFontIncrease.addEventListener('click', increaseFont);
+  if (btnFontIncreaseMob) btnFontIncreaseMob.addEventListener('click', increaseFont);
+  if (btnFontDecrease) btnFontDecrease.addEventListener('click', decreaseFont);
+  if (btnFontDecreaseMob) btnFontDecreaseMob.addEventListener('click', decreaseFont);
 
   function getScaleLabel(scale) {
     const labels = { 'normal': 'normal', 'large': 'grande', 'extra-large': 'extra grande' };
@@ -86,13 +93,23 @@ document.addEventListener('DOMContentLoaded', () => {
   // DARK MODE TOGGLE
   // ============================================
   const btnDarkMode = document.getElementById('btnDarkMode');
+  const btnDarkModeMob = document.getElementById('btnDarkModeMob');
   let isDark = false;
 
-  // Helper to update dark mode button content
   const updateDarkModeBtn = (dark) => {
-    btnDarkMode.innerHTML = dark
+    const html = dark
       ? '<span class="control-btn__icon">☀️</span><span class="control-btn__label">Modo Claro</span>'
       : '<span class="control-btn__icon">🌙</span><span class="control-btn__label">Modo Noturno</span>';
+    if (btnDarkMode) {
+      btnDarkMode.innerHTML = html;
+      btnDarkMode.classList.toggle('active', dark);
+    }
+    if (btnDarkModeMob) {
+      btnDarkModeMob.innerHTML = dark
+        ? '<span class="control-btn__icon">☀️</span> Claro'
+        : '<span class="control-btn__icon">🌙</span> Noturno';
+      btnDarkModeMob.classList.toggle('active', dark);
+    }
   };
 
   // Load saved preference
@@ -101,18 +118,19 @@ document.addEventListener('DOMContentLoaded', () => {
     isDark = true;
     document.documentElement.setAttribute('data-theme', 'dark');
     updateDarkModeBtn(true);
-    btnDarkMode.classList.add('active');
   }
 
-  btnDarkMode.addEventListener('click', () => {
+  const toggleDarkMode = () => {
     isDark = !isDark;
     const theme = isDark ? 'dark' : 'light';
     document.documentElement.setAttribute('data-theme', theme);
     localStorage.setItem('proteja-se-theme', theme);
     updateDarkModeBtn(isDark);
-    btnDarkMode.classList.toggle('active', isDark);
     announceToScreenReader(isDark ? 'Modo escuro ativado' : 'Modo claro ativado');
-  });
+  };
+
+  if (btnDarkMode) btnDarkMode.addEventListener('click', toggleDarkMode);
+  if (btnDarkModeMob) btnDarkModeMob.addEventListener('click', toggleDarkMode);
 
   // ============================================
   // ACCORDION
@@ -324,6 +342,142 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
   });
+
+  // ============================================
+  // TEXT TO SPEECH (AUDIO NARRATION FOR ELDERLY)
+  // ============================================
+  const btnAudioTTS = document.getElementById('btnAudioTTS');
+  const audioPlayer = document.getElementById('audioPlayer');
+  const audioStatus = document.getElementById('audioStatus');
+  const btnAudioPause = document.getElementById('btnAudioPause');
+  const btnAudioStop = document.getElementById('btnAudioStop');
+
+  let synth = window.speechSynthesis;
+  let isSpeaking = false;
+  let isPaused = false;
+
+  if (!synth) {
+    if (btnAudioTTS) btnAudioTTS.style.display = 'none';
+  } else {
+    const getPageTextChunks = () => {
+      const chunks = [];
+      chunks.push("Bem-vindo ao Proteja-se: Guia de Segurança Financeira para Idosos.");
+      chunks.push("Seu dinheiro merece proteção. Um guia feito com carinho para ajudar você a reconhecer golpes e conhecer seus direitos.");
+
+      const sections = document.querySelectorAll('main section');
+      sections.forEach(sec => {
+        const title = sec.querySelector('.section__title');
+        const subtitle = sec.querySelector('.section__subtitle');
+        if (title) chunks.push(title.textContent.trim());
+        if (subtitle) chunks.push(subtitle.textContent.trim());
+
+        const cardTitles = sec.querySelectorAll('.card__title, .alert-sign__title, .right-card__title, .step__title, .golden-rule__title');
+        cardTitles.forEach(ct => {
+          const cardText = ct.parentElement.querySelector('.card__text, .alert-sign__desc, .right-card__text, .step__text, .golden-rule__text');
+          if (ct && cardText) {
+            chunks.push(`${ct.textContent.trim()}: ${cardText.textContent.trim()}`);
+          }
+        });
+      });
+
+      return chunks;
+    };
+
+    let textChunks = [];
+    let currentChunkIndex = 0;
+
+    const speakNextChunk = () => {
+      if (currentChunkIndex >= textChunks.length) {
+        stopAudio();
+        return;
+      }
+
+      const text = textChunks[currentChunkIndex];
+      if (audioStatus) audioStatus.textContent = text.slice(0, 45) + '...';
+
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.lang = 'pt-BR';
+      utterance.rate = 0.92; // Slightly slower, natural rate for elderly
+
+      const voices = synth.getVoices();
+      const ptVoice = voices.find(v => v.lang && (v.lang.includes('pt-BR') || v.lang.includes('pt_BR') || v.lang.includes('pt')));
+      if (ptVoice) utterance.voice = ptVoice;
+
+      utterance.onend = () => {
+        if (isSpeaking && !isPaused) {
+          currentChunkIndex++;
+          speakNextChunk();
+        }
+      };
+
+      utterance.onerror = () => {
+        if (isSpeaking) {
+          currentChunkIndex++;
+          speakNextChunk();
+        }
+      };
+
+      synth.speak(utterance);
+    };
+
+    const startAudio = () => {
+      synth.cancel();
+      textChunks = getPageTextChunks();
+      currentChunkIndex = 0;
+      isSpeaking = true;
+      isPaused = false;
+
+      if (audioPlayer) audioPlayer.classList.add('active');
+      if (btnAudioTTS) btnAudioTTS.classList.add('active');
+      if (btnAudioTTSMob) btnAudioTTSMob.classList.add('active');
+      if (btnAudioPause) btnAudioPause.innerHTML = '⏸️ Pausar';
+
+      speakNextChunk();
+      announceToScreenReader("Iniciando leitura do site em áudio");
+    };
+
+    const pauseAudio = () => {
+      if (synth.speaking && !synth.paused) {
+        synth.pause();
+        isPaused = true;
+        if (btnAudioPause) btnAudioPause.innerHTML = '▶️ Continuar';
+        if (audioStatus) audioStatus.textContent = 'Leitura pausada';
+        announceToScreenReader("Leitura em áudio pausada");
+      } else if (synth.paused) {
+        synth.resume();
+        isPaused = false;
+        if (btnAudioPause) btnAudioPause.innerHTML = '⏸️ Pausar';
+        if (audioStatus) audioStatus.textContent = 'Continuando leitura...';
+        announceToScreenReader("Continuando leitura em áudio");
+      }
+    };
+
+    const stopAudio = () => {
+      synth.cancel();
+      isSpeaking = false;
+      isPaused = false;
+
+      if (audioPlayer) audioPlayer.classList.remove('active');
+      if (btnAudioTTS) btnAudioTTS.classList.remove('active');
+      if (btnAudioTTSMob) btnAudioTTSMob.classList.remove('active');
+      if (btnAudioPause) btnAudioPause.innerHTML = '⏸️ Pausar';
+      announceToScreenReader("Leitura em áudio encerrada");
+    };
+
+    const toggleAudioTTS = () => {
+      if (isSpeaking) {
+        stopAudio();
+      } else {
+        startAudio();
+      }
+    };
+
+    if (btnAudioTTS) btnAudioTTS.addEventListener('click', toggleAudioTTS);
+    if (btnAudioTTSMob) btnAudioTTSMob.addEventListener('click', toggleAudioTTS);
+
+    if (btnAudioPause) btnAudioPause.addEventListener('click', pauseAudio);
+    if (btnAudioStop) btnAudioStop.addEventListener('click', stopAudio);
+  }
 
   // ============================================
   // INITIAL SETUP

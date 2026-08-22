@@ -54,6 +54,11 @@
               <span class="control-btn__icon">🌙</span>
               <span class="control-btn__label">Modo Noturno</span>
             </button>
+            <div class="navbar__divider"></div>
+            <button class="control-btn" id="btnAudioTTS" title="Ouvir conteúdo" aria-label="Ouvir conteúdo do site em voz alta">
+              <span class="control-btn__icon">🔊</span>
+              <span class="control-btn__label">Ouvir Site</span>
+            </button>
           </div>
 
           <a href="#ajuda" class="navbar__emergency-btn" id="nav-emergency-btn">
@@ -73,6 +78,21 @@
     <!-- Bottom Bar: Navigation Links with Icons -->
     <div class="navbar__bottom" id="navBottom">
       <div class="navbar__bottom-inner">
+        <!-- Mobile Accessibility Drawer Section -->
+        <div class="mobile-a11y-bar">
+          <span class="mobile-a11y-bar__title">⚙️ Opções de Acessibilidade:</span>
+          <div class="mobile-a11y-bar__btns">
+            <button class="control-btn" id="btnFontDecreaseMob" title="Diminuir letra" aria-label="Diminuir tamanho da letra">A-</button>
+            <button class="control-btn" id="btnFontIncreaseMob" title="Aumentar letra" aria-label="Aumentar tamanho da letra">A+</button>
+            <button class="control-btn" id="btnDarkModeMob" title="Modo escuro" aria-label="Alternar modo escuro">
+              <span class="control-btn__icon">🌙</span> Noturno
+            </button>
+            <button class="control-btn" id="btnAudioTTSMob" title="Ouvir conteúdo" aria-label="Ouvir conteúdo do site em voz alta">
+              <span class="control-btn__icon">🔊</span> Ouvir Site
+            </button>
+          </div>
+        </div>
+
         <ul class="navbar__links" id="navLinks" role="menubar">
           <li role="none"><a href="#golpes" class="navbar__link" role="menuitem"><span class="navbar__link-icon">🎭</span> Golpes</a></li>
           <li role="none"><a href="#sinais" class="navbar__link" role="menuitem"><span class="navbar__link-icon">🚨</span> Sinais</a></li>
@@ -990,6 +1010,32 @@
       </div>
     </div>
   </footer>
+
+  <!-- Floating Audio Player Bar (Text to Speech for Elderly) -->
+  <div class="audio-player" id="audioPlayer" role="region" aria-label="Controle de narração em áudio">
+    <div class="audio-player__inner">
+      <div class="audio-player__info">
+        <span class="audio-player__icon">🔊</span>
+        <div class="audio-player__text-group">
+          <span class="audio-player__title">Lendo conteúdo do site...</span>
+          <span class="audio-player__subtitle" id="audioStatus">Aguardando início</span>
+        </div>
+      </div>
+      <div class="audio-player__controls">
+        <button class="audio-btn" id="btnAudioPause" title="Pausar ou Continuar áudio" aria-label="Pausar áudio">
+          ⏸️ Pausar
+        </button>
+        <button class="audio-btn audio-btn--danger" id="btnAudioStop" title="Parar narração" aria-label="Parar narração">
+          ⏹️ Parar
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile Floating Emergency FAB -->
+  <a href="#ajuda" class="mobile-emergency-fab" id="mobileEmergencyFab" aria-label="Pedir Ajuda de Emergência">
+    <span>📞</span> Pedir Ajuda
+  </a>
 
   <!-- Back to top button -->
   <button class="back-to-top" id="backToTop" aria-label="Voltar ao topo" title="Voltar ao topo">
