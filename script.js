@@ -359,28 +359,133 @@ document.addEventListener('DOMContentLoaded', () => {
   if (!synth) {
     if (btnAudioTTS) btnAudioTTS.style.display = 'none';
   } else {
+    const cleanSpeechText = (str) => {
+      if (!str) return '';
+      return str
+        .replace(/R\$\s*([\d\.\,]+)/gi, (match, val) => {
+          let numStr = val.replace(/\./g, '').replace(',', '.');
+          let num = parseFloat(numStr);
+          if (isNaN(num)) return val + ' reais';
+          if (num === 10000) return 'dez mil reais';
+          if (num === 5000) return 'cinco mil reais';
+          if (num === 800) return 'oitocentos reais';
+          if (num === 150) return 'cento e cinquenta reais';
+          if (num === 99) return 'noventa e nove reais';
+          return Math.floor(num) + ' reais';
+        })
+        .replace(/R\$/gi, 'reais')
+        .replace(/\bPIX\b/gi, 'Pícs')
+        .replace(/\bINSS\b/gi, 'I N S S')
+        .replace(/\bB\.O\.\b|\bB\.O\b|\bBO\b/gi, 'Boletim de Ocorrência')
+        .replace(/\bCPF\b/gi, 'C P F')
+        .replace(/\bRG\b/gi, 'R G')
+        .replace(/\bCVV\b/gi, 'C V V')
+        .replace(/\bCDC\b/gi, 'Código de Defesa do Consumidor')
+        .replace(/\bLGPD\b/gi, 'Lei Geral de Proteção de Dados')
+        .replace(/\b190\b/g, 'cento e noventa')
+        .replace(/\b100\b/g, 'cem')
+        .replace(/\b197\b/g, 'cento e noventa e sete')
+        .replace(/\b135\b/g, 'cento e trinta e cinco')
+        .replace(/\b145\b/g, 'cento e quarenta e cinco')
+        .replace(/\b151\b/g, 'cento e cinquenta e um')
+        .replace(/\s+/g, ' ')
+        .trim();
+    };
+
     const getPageTextChunks = () => {
       const chunks = [];
-      chunks.push("Bem-vindo ao Proteja-se: Guia de Segurança Financeira para Idosos.");
-      chunks.push("Seu dinheiro merece proteção. Um guia feito com carinho para ajudar você a reconhecer golpes e conhecer seus direitos.");
+      chunks.push(cleanSpeechText("Bem-vindo ao Proteja-se: Guia de Segurança Financeira para Idosos."));
+      chunks.push(cleanSpeechText("Seu dinheiro merece proteção. Um guia feito com carinho para ajudar você a reconhecer golpes, conhecer seus direitos e saber exatamente como agir."));
+      chunks.push(cleanSpeechText("Atenção importante: Nenhum banco, I N S S ou órgão do governo liga pedindo senha, Pícs ou dados pessoais. Nunca!"));
 
       const sections = document.querySelectorAll('main section');
       sections.forEach(sec => {
         const title = sec.querySelector('.section__title');
         const subtitle = sec.querySelector('.section__subtitle');
-        if (title) chunks.push(title.textContent.trim());
-        if (subtitle) chunks.push(subtitle.textContent.trim());
+        if (title) chunks.push(cleanSpeechText(title.textContent));
+        if (subtitle) chunks.push(cleanSpeechText(subtitle.textContent));
 
-        const cardTitles = sec.querySelectorAll('.card__title, .alert-sign__title, .right-card__title, .step__title, .golden-rule__title');
-        cardTitles.forEach(ct => {
-          const cardText = ct.parentElement.querySelector('.card__text, .alert-sign__desc, .right-card__text, .step__text, .golden-rule__text');
-          if (ct && cardText) {
-            chunks.push(`${ct.textContent.trim()}: ${cardText.textContent.trim()}`);
+        // Scam cards
+        const cards = sec.querySelectorAll('.card');
+        cards.forEach(card => {
+          const cardTitle = card.querySelector('.card__title');
+          const cardText = card.querySelector('.card__text');
+          const scamExampleMsg = card.querySelector('.scam-example__message');
+          const protectionItems = card.querySelectorAll('.protection-box__list li');
+
+          if (cardTitle) chunks.push(cleanSpeechText("Atenção para o " + cardTitle.textContent));
+          if (cardText) chunks.push(cleanSpeechText(cardText.textContent));
+          if (scamExampleMsg) chunks.push(cleanSpeechText("Exemplo de mensagem ou ligação falsa: " + scamExampleMsg.textContent));
+          if (protectionItems.length > 0) {
+            chunks.push(cleanSpeechText("Orientações de como se proteger:"));
+            protectionItems.forEach(li => {
+              chunks.push(cleanSpeechText(li.textContent));
+            });
           }
         });
+
+        // Alert signs
+        const alertSigns = sec.querySelectorAll('.alert-sign');
+        alertSigns.forEach(sign => {
+          const st = sign.querySelector('.alert-sign__title');
+          const sd = sign.querySelector('.alert-sign__desc');
+          if (st && sd) chunks.push(cleanSpeechText("Sinal de alerta: " + st.textContent + ". " + sd.textContent));
+        });
+
+        // Rights cards
+        const rights = sec.querySelectorAll('.right-card');
+        rights.forEach(r => {
+          const rt = r.querySelector('.right-card__title');
+          const rd = r.querySelector('.right-card__text');
+          const rl = r.querySelector('.right-card__law');
+          if (rt && rd) {
+            let txt = "Seu direito: " + rt.textContent + ". " + rd.textContent;
+            if (rl) txt += " Amparado pela " + rl.textContent;
+            chunks.push(cleanSpeechText(txt));
+          }
+        });
+
+        // Recovery steps
+        const steps = sec.querySelectorAll('.step');
+        steps.forEach((st, idx) => {
+          const stTitle = st.querySelector('.step__title');
+          const stText = st.querySelector('.step__text');
+          const stHighlight = st.querySelector('.step__highlight');
+          if (stTitle && stText) {
+            let txt = `Passo ${idx + 1}: ` + stTitle.textContent + ". " + stText.textContent;
+            if (stHighlight) txt += " " + stHighlight.textContent;
+            chunks.push(cleanSpeechText(txt));
+          }
+        });
+
+        // Contact cards
+        const contacts = sec.querySelectorAll('.contact-card');
+        contacts.forEach(c => {
+          const cn = c.querySelector('.contact-card__name');
+          const cnum = c.querySelector('.contact-card__number');
+          const cd = c.querySelector('.contact-card__desc');
+          if (cn && cnum) {
+            chunks.push(cleanSpeechText(`Contato de ajuda: ${cn.textContent}, número ${cnum.textContent}. ${cd ? cd.textContent : ''}`));
+          }
+        });
+
+        // FAQ Accordion
+        const faqs = sec.querySelectorAll('.accordion__item');
+        faqs.forEach(faq => {
+          const q = faq.querySelector('.accordion__header span:nth-child(2)');
+          const a = faq.querySelector('.accordion__content');
+          if (q && a) {
+            chunks.push(cleanSpeechText("Pergunta frequente: " + q.textContent));
+            chunks.push(cleanSpeechText("Resposta: " + a.textContent));
+          }
+        });
+
+        // Quotes
+        const quotes = sec.querySelectorAll('.highlight-quote__text');
+        quotes.forEach(q => chunks.push(cleanSpeechText(q.textContent)));
       });
 
-      return chunks;
+      return chunks.filter(c => c && c.length > 0);
     };
 
     let textChunks = [];

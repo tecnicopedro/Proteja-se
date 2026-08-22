@@ -1490,14 +1490,18 @@ a:focus-visible {
     display: inline-flex;
     align-items: center;
     gap: 8px;
+    bottom: 16px;
+    left: 16px;
+    z-index: 1100;
   }
 
   .back-to-top {
-    bottom: 80px;
+    bottom: 16px;
     right: 16px;
     width: 48px;
     height: 48px;
     font-size: 20px;
+    z-index: 1090;
   }
 
   /* Hide bottom nav bar on mobile, use full-screen drawer menu instead */
